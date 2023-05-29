@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 000eff965a8f0334dad833d57b4d7ecd, type: 3}
-  m_Name: Flat
+  m_Name: Soil
   m_EditorClassIdentifier: 
-  _spawnPrefab: {fileID: 6478236467440366772, guid: cffb3fa71ed303845b8656d3fc09c139,
+  _spawnPrefab: {fileID: 3219688350827384487, guid: 7d686905f0fb59048a0e813c1ceb8f6e,
     type: 3}
   _XFaceAllowed:
-  - _sample: {fileID: 11400000}
-    _atAnAngle: 0
   - _sample: {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
     _atAnAngle: 90
-  _NegativeXFaceAllowed:
   - _sample: {fileID: 11400000}
-    _atAnAngle: 0
+    _atAnAngle: 90
+  _NegativeXFaceAllowed:
   - _sample: {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
+    _atAnAngle: -90
+  - _sample: {fileID: 11400000}
     _atAnAngle: -90
   _YFaceAllowed: []
   _NegativeYFaceAllowed:
-  - _sample: {fileID: 11400000, guid: 9454e4ea914b43c4384cf5a8b3adbd72, type: 2}
+  - _sample: {fileID: 11400000}
     _atAnAngle: 0
   _ZFaceAllowed:
-  - _sample: {fileID: 11400000}
-    _atAnAngle: 0
   - _sample: {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
+    _atAnAngle: 0
+  - _sample: {fileID: 11400000}
     _atAnAngle: 0
   _NegativeZFaceAllowed:
-  - _sample: {fileID: 11400000}
-    _atAnAngle: 0
   - _sample: {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
+    _atAnAngle: 180
+  - _sample: {fileID: 11400000}
     _atAnAngle: 180

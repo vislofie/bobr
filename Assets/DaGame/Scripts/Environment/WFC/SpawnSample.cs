@@ -37,10 +37,10 @@ public class SpawnSample : ScriptableObject
 public class AttachedObject
 {
     [SerializeField]
-    private GameObject _prefab;
+    private SpawnSample _sample;
     [SerializeField]
     private float _atAnAngle;
 
-    public GameObject Prefab => _prefab;
+    public SpawnSample Sample => _sample;
     public float AtAnAngle => _atAnAngle;
 }
