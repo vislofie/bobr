@@ -31,6 +31,9 @@ public class WFCSpawner : MonoBehaviour
         InitializeGrid();
     }
 
+    /// <summary>
+    /// fills grid and its cells coordinates
+    /// </summary>
     public void InitializeGrid()
     {
         if (!_startedCollapse)
@@ -45,21 +48,12 @@ public class WFCSpawner : MonoBehaviour
 
                 _cells.Add(new Cell(_spawnSamples, currentXCoord, currentYCoord, currentZCoord));
             }
-
-            for (int i = 0; i < _cells.Count; i++)
-            {
-                Cell currentCell = _cells[i];
-
-                currentCell.FillNeighbours(TakeCellByPosition(currentCell.X + 1, currentCell.Y, currentCell.Z),
-                                           TakeCellByPosition(currentCell.X - 1, currentCell.Y, currentCell.Z),
-                                           TakeCellByPosition(currentCell.X, currentCell.Y + 1, currentCell.Z),
-                                           TakeCellByPosition(currentCell.X, currentCell.Y - 1, currentCell.Z),
-                                           TakeCellByPosition(currentCell.X, currentCell.Y, currentCell.Z + 1),
-                                           TakeCellByPosition(currentCell.X, currentCell.Y, currentCell.Z - 1));
-            }
         }
     }
 
+    /// <summary>
+    /// Starts the process of collapsing the whole grid
+    /// </summary>
     public void CollapseGrid()
     {
         StopCollapsing();
@@ -67,12 +61,20 @@ public class WFCSpawner : MonoBehaviour
         StartCoroutine(CollapseVisualizer(_visualizerPauseValue));
     }
 
+    /// <summary>
+    /// Forcefully stops collapsion
+    /// </summary>
     public void StopCollapsing()
     {
         _startedCollapse = false;
         StopAllCoroutines();
     }
 
+    /// <summary>
+    /// Visualizes process of collapsion
+    /// </summary>
+    /// <param name="timeToWait">time it takes to wait between steps</param>
+    /// <returns></returns>
     private IEnumerator CollapseVisualizer(float timeToWait)
     {
         for (int i = 0; i < _cells.Count; i++)
@@ -81,40 +83,23 @@ public class WFCSpawner : MonoBehaviour
             if (currentCell == null) break;
 
             currentCell.CollapseCell();
+            PropagateChangesToOthers(currentCell);
 
-            _currentCubePos = new Vector3(currentCell.X, currentCell.Y, currentCell.Z) * _cellScale * 2;
+            _currentCubePos = new Vector3(currentCell.X, currentCell.Y, currentCell.Z) * _cellScale;
 
             yield return new WaitForSeconds(_visualizerPauseValue);
 
-            if (currentCell.SamplesWithAngles.Keys.Count > 0)
+            if (currentCell.Samples.Count > 0)
             {
-                SpawnSample currentCellSpawnSample = currentCell.SamplesWithAngles.Keys.First();
+                SpawnSample currentCellSpawnSample = currentCell.Samples[0];
 
                 if (currentCellSpawnSample != null)
                 {
-                    // TODO: fill samples of neighbours considering local rotation of current cell
-                    currentCell.PositiveXNeighbour?.FillSamples(currentCellSpawnSample.XFaceAllowed.Select(ao => ao.Sample).ToArray(),
-                                                           currentCellSpawnSample.XFaceAllowed.Select(ao => ao.AtAnAngle).ToArray());
-                    yield return new WaitForSeconds(_visualizerPauseValue / 2);
+                    GameObject SpawnedCell = Instantiate(currentCellSpawnSample.SpawnPrefab, 
+                                             (new Vector3(currentCell.X, currentCell.Y, currentCell.Z) - Vector3.up / 2) * _cellScale, 
+                                             Quaternion.identity);
 
-                    currentCell.NegativeXNeighbour?.FillSamples(currentCellSpawnSample.NegativeXFaceAllowed.Select(ao => ao.Sample).ToArray(),
-                                                               currentCellSpawnSample.NegativeXFaceAllowed.Select(ao => ao.AtAnAngle).ToArray());
-                    yield return new WaitForSeconds(_visualizerPauseValue / 2);
-                    currentCell.PositiveYNeighbour?.FillSamples(currentCellSpawnSample.YFaceAllowed.Select(ao => ao.Sample).ToArray(),
-                                                                currentCellSpawnSample.YFaceAllowed.Select(ao => ao.AtAnAngle).ToArray());
-                    yield return new WaitForSeconds(_visualizerPauseValue / 2);
-                    currentCell.NegativeYNeighbour?.FillSamples(currentCellSpawnSample.NegativeYFaceAllowed.Select(ao => ao.Sample).ToArray(),
-                                                                currentCellSpawnSample.NegativeYFaceAllowed.Select(ao => ao.AtAnAngle).ToArray());
-                    yield return new WaitForSeconds(_visualizerPauseValue / 2);
-                    currentCell.PositiveZNeighbour?.FillSamples(currentCellSpawnSample.ZFaceAllowed.Select(ao => ao.Sample).ToArray(),
-                                                               currentCellSpawnSample.ZFaceAllowed.Select(ao => ao.AtAnAngle).ToArray());
-                    yield return new WaitForSeconds(_visualizerPauseValue / 2);
-                    currentCell.NegativeZNeighbour?.FillSamples(currentCellSpawnSample.NegativeZFaceAllowed.Select(ao => ao.Sample).ToArray(),
-                                                               currentCellSpawnSample.NegativeZFaceAllowed.Select(ao => ao.AtAnAngle).ToArray());
-                    yield return new WaitForSeconds(_visualizerPauseValue / 2);
-
-                    Debug.Log(currentCell.Collapsed);
-                    Instantiate(currentCellSpawnSample.SpawnPrefab, (new Vector3(currentCell.X, currentCell.Y, currentCell.Z) - Vector3.up / 2) * _cellScale * 2, Quaternion.Euler(0, currentCell.SamplesWithAngles[currentCellSpawnSample], 0));
+                    SpawnedCell.transform.localScale *= _cellScale;
                 }
             }
 
@@ -123,6 +108,42 @@ public class WFCSpawner : MonoBehaviour
         _startedCollapse = false;
     }
 
+    /// <summary>
+    /// Propagates changes in states of cells to other cells
+    /// </summary>
+    /// <param name="fromCell">cell that propagates to its neighbours</param>
+    private void PropagateChangesToOthers(Cell fromCell)
+    {
+        Cell[] neighbours = TakeCellsNeighbours(fromCell);
+        for (int i = 0; i < neighbours.Length; i++)
+        {
+            // TODO: Propagate changes to all others cell starting from fromCell
+        }
+    }
+
+    /// <summary>
+    /// Returns neighbours in following order: positiveX, negativeX, positiveY, negativeY, positiveZ, negativeZ
+    /// </summary>
+    /// <param name="cell">cell which neighbours to get</param>
+    /// <returns></returns>
+    private Cell[] TakeCellsNeighbours(Cell cell)
+    {
+        Cell[] neighbours = new Cell[6];
+
+        neighbours[0] = TakeCellByPosition(cell.X + 1, cell.Y,     cell.Z);     // forward
+        neighbours[1] = TakeCellByPosition(cell.X - 1, cell.Y,     cell.Z);     // backward
+        neighbours[2] = TakeCellByPosition(cell.X,     cell.Y + 1, cell.Z);     // top
+        neighbours[3] = TakeCellByPosition(cell.X,     cell.Y - 1, cell.Z);     // bottom
+        neighbours[4] = TakeCellByPosition(cell.X,     cell.Y,     cell.Z + 1); // right
+        neighbours[5] = TakeCellByPosition(cell.X,     cell.Y,     cell.Z - 1); // left
+
+        return neighbours;
+    }
+
+    /// <summary>
+    /// gets a cell with the least amount of possible samples(a.k.a. the lowest entropy)
+    /// </summary>
+    /// <returns>cell with the least amount of entropy</returns>
     private Cell TakeCellWithSmallestEntropy()
     {
         int minimumEntropy = int.MaxValue;
@@ -133,9 +154,9 @@ public class WFCSpawner : MonoBehaviour
 
         for (int i = 0; i < shuffledArray.Length; i++)
         {
-            if (shuffledArray[i].SamplesWithAngles.Keys.Count < minimumEntropy  && shuffledArray[i].SamplesWithAngles.Keys.Count > 0 && !shuffledArray[i].Collapsed)
+            if (shuffledArray[i].Samples.Count < minimumEntropy  && shuffledArray[i].Samples.Count > 0 && !shuffledArray[i].Collapsed)
             {
-                minimumEntropy = shuffledArray[i].SamplesWithAngles.Count;
+                minimumEntropy = shuffledArray[i].Samples.Count;
                 cellIndex = FromPositionToIndex(shuffledArray[i].X, shuffledArray[i].Y, shuffledArray[i].Z);
             }
         }
@@ -149,11 +170,19 @@ public class WFCSpawner : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// transform coordinates into index in the cell array
+    /// </summary>
+    /// <returns></returns>
     private int FromPositionToIndex(int x, int y, int z)
     {
         return x + z * _gridWidth + y * (_gridWidth * _gridLength);
     }
 
+    /// <summary>
+    /// gets cell by its position in WFC solver space
+    /// </summary>
+    /// <returns></returns>
     private Cell TakeCellByPosition(int x, int y, int z)
     {
         for (int i = 0; i < _cells.Count; i++)
@@ -167,6 +196,9 @@ public class WFCSpawner : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// ugly code pretty gizmos, dont judge
+    /// </summary>
     private void OnDrawGizmos()
     {
         Color transparentYellow = Color.yellow;
@@ -178,35 +210,48 @@ public class WFCSpawner : MonoBehaviour
             if (_cells[i].Collapsed)
                 Gizmos.color = Color.red;
 
-            Vector3 cellPos = new Vector3(_cells[i].X, _cells[i].Y, _cells[i].Z) * _cellScale * 2;
-            Gizmos.DrawWireCube(cellPos, Vector3.one * _cellScale * 2);
+            Vector3 cellPos = new Vector3(_cells[i].X, _cells[i].Y, _cells[i].Z) * _cellScale;
+            Gizmos.DrawWireCube(cellPos, Vector3.one * _cellScale);
 
             Gizmos.color = transparentYellow;
-            Gizmos.DrawCube(_currentCubePos, Vector3.one * _cellScale * 2);
+            Gizmos.DrawCube(_currentCubePos, Vector3.one * _cellScale);
 
             Gizmos.color = Color.blue;
 
-            if (_cells[i].SamplesWithAngles.ContainsKey(_spawnSamples[0]))
+            if (_cells[i].Samples.Contains(_spawnSamples[0]))
             {
                 Gizmos.DrawMesh(_spawnSamples[0].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh, 
-                                    cellPos - new Vector3(0.5f, 0.0f, 0.0f),
-                                    Quaternion.Euler(-90, _cells[i].SamplesWithAngles[_spawnSamples[0]], 0),
-                                    Vector3.one * 25.0f * _cellScale);
+                                    cellPos - new Vector3(0.25f, 0.0f, 0.0f) * _cellScale,
+                                    _spawnSamples[0].SpawnPrefab.transform.GetChild(0).localRotation,
+                                    Vector3.one * _cellScale / 4);
             }
-            if (_cells[i].SamplesWithAngles.ContainsKey(_spawnSamples[1]))
+            if (_cells[i].Samples.Contains(_spawnSamples[1]))
             {
                 Gizmos.DrawMesh(_spawnSamples[1].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh, 
-                                    cellPos + new Vector3(0.5f, 0.0f, 0.0f), 
-                                    Quaternion.Euler(-90, _cells[i].SamplesWithAngles[_spawnSamples[1]], 0),
-                                    Vector3.one * 25.0f * _cellScale);
+                                    cellPos + new Vector3(0.25f, 0.0f, 0.0f) * _cellScale,
+                                    _spawnSamples[1].SpawnPrefab.transform.GetChild(0).localRotation,
+                                    Vector3.one * _cellScale / 4);
             }
-
-            if (_cells[i].SamplesWithAngles.ContainsKey(_spawnSamples[2]))
+            if (_cells[i].Samples.Contains(_spawnSamples[2]))
             {
                 Gizmos.DrawMesh(_spawnSamples[2].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
-                                    cellPos + new Vector3(0.0f, 0.75f, 0.0f),
-                                    Quaternion.Euler(0, _cells[i].SamplesWithAngles[_spawnSamples[2]], 0),
-                                    Vector3.one / 2 * _cellScale);
+                                    cellPos + new Vector3(0.0f, 0.25f, 0.0f) * _cellScale,
+                                    _spawnSamples[2].SpawnPrefab.transform.GetChild(0).localRotation,
+                                    Vector3.one * _cellScale / 4);
+            }
+            if (_cells[i].Samples.Contains(_spawnSamples[3]))
+            {
+                Gizmos.DrawMesh(_spawnSamples[3].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
+                                    cellPos + new Vector3(0.0f, -0.25f, 0.0f) * _cellScale,
+                                    _spawnSamples[3].SpawnPrefab.transform.GetChild(0).localRotation,
+                                    Vector3.one * _cellScale / 4);
+            }
+            if (_cells[i].Samples.Contains(_spawnSamples[4]))
+            {
+                Gizmos.DrawMesh(_spawnSamples[4].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
+                                    cellPos + new Vector3(0.0f, 0.0f, 0.25f) * _cellScale,
+                                    _spawnSamples[4].SpawnPrefab.transform.GetChild(0).localRotation,
+                                    Vector3.one * _cellScale / 4);
             }
         }
     }

@@ -15,26 +15,17 @@ MonoBehaviour:
   _spawnPrefab: {fileID: 3219688350827384487, guid: 7d686905f0fb59048a0e813c1ceb8f6e,
     type: 3}
   _XFaceAllowed:
-  - _sample: {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
-    _atAnAngle: 90
-  - _sample: {fileID: 11400000}
-    _atAnAngle: 90
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: f24b768d3ca87364494254bc0c143bea, type: 2}
   _NegativeXFaceAllowed:
-  - _sample: {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
-    _atAnAngle: -90
-  - _sample: {fileID: 11400000}
-    _atAnAngle: -90
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 77ea4643301254542a4c8cb8f12d805c, type: 2}
   _YFaceAllowed: []
   _NegativeYFaceAllowed:
-  - _sample: {fileID: 11400000}
-    _atAnAngle: 0
+  - {fileID: 11400000}
   _ZFaceAllowed:
-  - _sample: {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
-    _atAnAngle: 0
-  - _sample: {fileID: 11400000}
-    _atAnAngle: 0
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
   _NegativeZFaceAllowed:
-  - _sample: {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
-    _atAnAngle: 180
-  - _sample: {fileID: 11400000}
-    _atAnAngle: 180
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 1f769d7f992ac19458c37e4dc7061548, type: 2}
