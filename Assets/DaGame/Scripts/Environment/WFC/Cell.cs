@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 [Serializable]
@@ -47,16 +46,19 @@ public class Cell
                     }
                     emptyOnInitSumWeight += Samples[i].RandomChance;
                 }
+
+                Samples = new List<SpawnSample> { chosenSample };
             }
             
-
-            Samples = new List<SpawnSample> { chosenSample };
             Collapsed = true;
         }
     }
 
-    public void CompareSamples()
+    public void RemoveSample(SpawnSample sample)
     {
-
+        if (Samples.Contains(sample))
+        {
+            Samples.Remove(sample);
+        }
     }
 }

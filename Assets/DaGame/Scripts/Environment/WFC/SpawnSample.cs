@@ -5,6 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SpawnSample", menuName = "ScriptableObjects/SpawnSample", order = 1)]
 public class SpawnSample : ScriptableObject
 {
+    public enum Axis
+    {
+        PositiveX = 0, NegativeX, PositiveY, NegativeY, PositiveZ, NegativeZ
+    }
+
     [SerializeField]
     private GameObject _spawnPrefab;
 

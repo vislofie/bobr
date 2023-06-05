@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 000eff965a8f0334dad833d57b4d7ecd, type: 3}
-  m_Name: Soil
+  m_Name: Ground
   m_EditorClassIdentifier: 
-  _spawnPrefab: {fileID: 3219688350827384487, guid: 7d686905f0fb59048a0e813c1ceb8f6e,
+  _spawnPrefab: {fileID: 3219688350827384487, guid: 5eb31ee95de7d4940890dcef293893b7,
     type: 3}
   _randomChance: 1
   _XFaceAllowed:
   - {fileID: 11400000}
+  - {fileID: 11400000, guid: f24b768d3ca87364494254bc0c143bea, type: 2}
   _NegativeXFaceAllowed:
   - {fileID: 11400000}
-  _YFaceAllowed:
-  - {fileID: 11400000, guid: 9454e4ea914b43c4384cf5a8b3adbd72, type: 2}
   - {fileID: 11400000, guid: 77ea4643301254542a4c8cb8f12d805c, type: 2}
-  - {fileID: 11400000, guid: 1f769d7f992ac19458c37e4dc7061548, type: 2}
-  - {fileID: 11400000, guid: f24b768d3ca87364494254bc0c143bea, type: 2}
-  - {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
+  _YFaceAllowed: []
   _NegativeYFaceAllowed:
   - {fileID: 11400000}
+  - {fileID: 11400000, guid: 6605f62ced6212d4d9735ce451e58030, type: 2}
   _ZFaceAllowed:
   - {fileID: 11400000}
+  - {fileID: 11400000, guid: 333f5bc65ede58a428a39d71c57d23db, type: 2}
+  - {fileID: 11400000, guid: 77ea4643301254542a4c8cb8f12d805c, type: 2}
   _NegativeZFaceAllowed:
   - {fileID: 11400000}
+  - {fileID: 11400000, guid: 1f769d7f992ac19458c37e4dc7061548, type: 2}

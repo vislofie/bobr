@@ -2,7 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 using UnityEngine;
+using Unity.VisualScripting;
+using System;
 
+[ExecuteInEditMode]
 public class WFCSpawner : MonoBehaviour
 {
     [SerializeField]
@@ -21,12 +24,15 @@ public class WFCSpawner : MonoBehaviour
     private float _visualizerPauseValue = 2.0f;
 
     private Vector3 _currentCubePos = Vector3.zero;
+    private Vector3 _currentNeighbourPos = Vector3.zero;
 
     private List<Cell> _cells;
+    private Stack<Cell> _stackedCells = new Stack<Cell>();
 
     private bool _startedCollapse = false;
+    
 
-    private void OnValidate()
+    private void Update()
     {
         InitializeGrid();
     }
@@ -83,17 +89,21 @@ public class WFCSpawner : MonoBehaviour
             if (currentCell == null) break;
 
             currentCell.CollapseCell();
+
+            if (_visualizerPauseValue != 0)
+                yield return new WaitForSeconds(_visualizerPauseValue);
+
             PropagateChangesToOthers(currentCell);
 
-            _currentCubePos = new Vector3(currentCell.X, currentCell.Y, currentCell.Z) * _cellScale;
+            yield return Propagation(currentCell);
 
-            yield return new WaitForSeconds(_visualizerPauseValue);
+            _currentCubePos = new Vector3(currentCell.X, currentCell.Y, currentCell.Z) * _cellScale;
 
             if (currentCell.Samples.Count > 0)
             {
                 SpawnSample currentCellSpawnSample = currentCell.Samples[0];
 
-                if (currentCellSpawnSample != null)
+                if (currentCellSpawnSample != null && currentCellSpawnSample.SpawnPrefab != null)
                 {
                     GameObject SpawnedCell = Instantiate(currentCellSpawnSample.SpawnPrefab, 
                                              (new Vector3(currentCell.X, currentCell.Y, currentCell.Z) - Vector3.up / 2) * _cellScale, 
@@ -103,7 +113,8 @@ public class WFCSpawner : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(_visualizerPauseValue * 1.5f);
+            if (_visualizerPauseValue != 0)
+                yield return new WaitForSeconds(_visualizerPauseValue * 1.5f);
         }
         _startedCollapse = false;
     }
@@ -114,11 +125,103 @@ public class WFCSpawner : MonoBehaviour
     /// <param name="fromCell">cell that propagates to its neighbours</param>
     private void PropagateChangesToOthers(Cell fromCell)
     {
-        Cell[] neighbours = TakeCellsNeighbours(fromCell);
-        for (int i = 0; i < neighbours.Length; i++)
+        StartCoroutine(Propagation(fromCell));
+    }
+
+    private IEnumerator Propagation(Cell fromCell)
+    {
+        _stackedCells.Push(fromCell);
+
+        while (_stackedCells.Count > 0)
         {
-            // TODO: Propagate changes to all others cell starting from fromCell
+            Cell currentCell = _stackedCells.Pop();
+
+            Cell[] neighbours = TakeCellsNeighbours(currentCell);
+            _currentNeighbourPos = new Vector3(-1000, -1000, -1000) * _cellScale;
+
+            for (int i = 0; i < neighbours.Length; i++)
+            {
+                if (currentCell.Samples.Count == 0 && i != 2)
+                    continue;
+
+                Cell currentNeighbour = neighbours[i];
+                if (currentNeighbour == null)
+                    continue;
+
+                _currentNeighbourPos = new Vector3(currentNeighbour.X, currentNeighbour.Y, currentNeighbour.Z) * _cellScale;
+
+                SpawnSample[] neighboursSamples = currentNeighbour.Samples.ToArray();
+
+                SpawnSample[] possibleNeighbours = GetPossibleNeighbours(currentCell, (SpawnSample.Axis)i);
+
+                if (neighboursSamples.Length == 0)
+                    continue;
+
+                for (int k = 0; k < neighboursSamples.Length; k++)
+                {
+
+                    if (!possibleNeighbours.Contains(neighboursSamples[k]))
+                    {
+                        currentNeighbour.RemoveSample(neighboursSamples[k]);
+                        if (!_stackedCells.Contains(currentNeighbour))
+                            _stackedCells.Push(currentNeighbour);
+                    }
+
+                    if (_visualizerPauseValue != 0)
+                        yield return new WaitForSeconds(_visualizerPauseValue * 1.5f);
+                }
+            }
         }
+    }
+
+    private SpawnSample[] GetPossibleNeighbours(Cell fromCell, SpawnSample.Axis axis)
+    {
+        List<SpawnSample> samples = new List<SpawnSample>();
+        List<SpawnSample> cellSamples = fromCell.Samples;
+        switch (axis)
+        {
+            case SpawnSample.Axis.PositiveX:
+                for (int i = 0; i < cellSamples.Count; i++)
+                {
+                    samples.AddRange(cellSamples[i].XFaceAllowed);
+                }
+                break;
+            case SpawnSample.Axis.NegativeX:
+                for (int i = 0; i < cellSamples.Count; i++)
+                {
+                    samples.AddRange(cellSamples[i].NegativeXFaceAllowed);
+                }
+                break;
+            case SpawnSample.Axis.PositiveY:
+                for (int i = 0; i < cellSamples.Count; i++)
+                {
+                    samples.AddRange(cellSamples[i].YFaceAllowed);
+                }
+                break;
+            case SpawnSample.Axis.NegativeY:
+                for (int i = 0; i < cellSamples.Count; i++)
+                {
+                    samples.AddRange(cellSamples[i].NegativeYFaceAllowed);
+                }
+                break;
+            case SpawnSample.Axis.PositiveZ:
+                for (int i = 0; i < cellSamples.Count; i++)
+                {
+                    samples.AddRange(cellSamples[i].ZFaceAllowed);
+                }
+                break;
+            case SpawnSample.Axis.NegativeZ:
+                for (int i = 0; i < cellSamples.Count; i++)
+                {
+                    samples.AddRange(cellSamples[i].NegativeZFaceAllowed);
+                }
+                break;
+            default:
+                samples = null;
+                break;
+        }
+
+        return samples.ToArray();
     }
 
     /// <summary>
@@ -201,8 +304,9 @@ public class WFCSpawner : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        Color transparentYellow = Color.yellow;
-        transparentYellow.a = 0.1f;
+        Color transparentYellow = new Color(1, 1, 0, 0.01f);
+        Color transparentRed = new Color(1, 0, 0, 0.01f);
+
         for (int i = 0; i < _cells.Count; i++)
         {
             Gizmos.color = Color.yellow;
@@ -216,18 +320,21 @@ public class WFCSpawner : MonoBehaviour
             Gizmos.color = transparentYellow;
             Gizmos.DrawCube(_currentCubePos, Vector3.one * _cellScale);
 
+            Gizmos.color = transparentRed;
+            Gizmos.DrawCube(_currentNeighbourPos, Vector3.one * _cellScale);
+
             Gizmos.color = Color.blue;
 
             if (_cells[i].Samples.Contains(_spawnSamples[0]))
             {
-                Gizmos.DrawMesh(_spawnSamples[0].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh, 
+                Gizmos.DrawMesh(_spawnSamples[0].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
                                     cellPos - new Vector3(0.25f, 0.0f, 0.0f) * _cellScale,
                                     _spawnSamples[0].SpawnPrefab.transform.GetChild(0).localRotation,
                                     Vector3.one * _cellScale / 4);
             }
             if (_cells[i].Samples.Contains(_spawnSamples[1]))
             {
-                Gizmos.DrawMesh(_spawnSamples[1].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh, 
+                Gizmos.DrawMesh(_spawnSamples[1].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
                                     cellPos + new Vector3(0.25f, 0.0f, 0.0f) * _cellScale,
                                     _spawnSamples[1].SpawnPrefab.transform.GetChild(0).localRotation,
                                     Vector3.one * _cellScale / 4);
