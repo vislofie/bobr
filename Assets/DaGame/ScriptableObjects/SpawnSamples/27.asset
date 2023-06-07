@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000eff965a8f0334dad833d57b4d7ecd, type: 3}
+  m_Name: 27
+  m_EditorClassIdentifier: 
+  _spawnPrefab: {fileID: 6536752611796819875, guid: c24b7d95e5f914941ba1ffa77d05b02b,
+    type: 3}
+  _randomChance: 1
+  _XFaceAllowed: []
+  _NegativeXFaceAllowed: []
+  _YFaceAllowed: []
+  _NegativeYFaceAllowed: []
+  _ZFaceAllowed: []
+  _NegativeZFaceAllowed: []

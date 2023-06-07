@@ -159,7 +159,6 @@ public class WFCSpawner : MonoBehaviour
 
                 for (int k = 0; k < neighboursSamples.Length; k++)
                 {
-
                     if (!possibleNeighbours.Contains(neighboursSamples[k]))
                     {
                         currentNeighbour.RemoveSample(neighboursSamples[k]);
@@ -324,42 +323,6 @@ public class WFCSpawner : MonoBehaviour
             Gizmos.DrawCube(_currentNeighbourPos, Vector3.one * _cellScale);
 
             Gizmos.color = Color.blue;
-
-            if (_cells[i].Samples.Contains(_spawnSamples[0]))
-            {
-                Gizmos.DrawMesh(_spawnSamples[0].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
-                                    cellPos - new Vector3(0.25f, 0.0f, 0.0f) * _cellScale,
-                                    _spawnSamples[0].SpawnPrefab.transform.GetChild(0).localRotation,
-                                    Vector3.one * _cellScale / 4);
-            }
-            if (_cells[i].Samples.Contains(_spawnSamples[1]))
-            {
-                Gizmos.DrawMesh(_spawnSamples[1].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
-                                    cellPos + new Vector3(0.25f, 0.0f, 0.0f) * _cellScale,
-                                    _spawnSamples[1].SpawnPrefab.transform.GetChild(0).localRotation,
-                                    Vector3.one * _cellScale / 4);
-            }
-            if (_cells[i].Samples.Contains(_spawnSamples[2]))
-            {
-                Gizmos.DrawMesh(_spawnSamples[2].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
-                                    cellPos + new Vector3(0.0f, 0.25f, 0.0f) * _cellScale,
-                                    _spawnSamples[2].SpawnPrefab.transform.GetChild(0).localRotation,
-                                    Vector3.one * _cellScale / 4);
-            }
-            if (_cells[i].Samples.Contains(_spawnSamples[3]))
-            {
-                Gizmos.DrawMesh(_spawnSamples[3].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
-                                    cellPos + new Vector3(0.0f, -0.25f, 0.0f) * _cellScale,
-                                    _spawnSamples[3].SpawnPrefab.transform.GetChild(0).localRotation,
-                                    Vector3.one * _cellScale / 4);
-            }
-            if (_cells[i].Samples.Contains(_spawnSamples[4]))
-            {
-                Gizmos.DrawMesh(_spawnSamples[4].SpawnPrefab.GetComponentInChildren<MeshFilter>().sharedMesh,
-                                    cellPos + new Vector3(0.0f, 0.0f, 0.25f) * _cellScale,
-                                    _spawnSamples[4].SpawnPrefab.transform.GetChild(0).localRotation,
-                                    Vector3.one * _cellScale / 4);
-            }
         }
     }
 }
