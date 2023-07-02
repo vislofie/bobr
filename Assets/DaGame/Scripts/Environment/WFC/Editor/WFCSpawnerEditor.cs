@@ -16,5 +16,13 @@ public class WFCSpawnerEditor : Editor
         {
             (target as WFCSpawner).StopCollapsing();
         }
+        if (GUILayout.Button("Clear blocks"))
+        {
+            (target as WFCSpawner).ClearBlocks();
+        }
+        if (GUILayout.Button("Load from XML"))
+        {
+            (target as WFCSpawner).LoadSamplesFromXML(EditorUtility.OpenFilePanel("XML file that contains samples", "", "xml"));
+        }
     }
 }

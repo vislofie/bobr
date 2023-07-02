@@ -17,6 +17,11 @@ public class SpawnSample : ScriptableObject
     [SerializeField]
     private float _randomChance = 1.0f;
 
+    [SerializeField]
+    private float _offsetAngle = 0.0f;
+
+    public float OffsetAngle => _offsetAngle;
+
     [Header("Relations")]
     [SerializeField]
     private SpawnSample[] _XFaceAllowed;
@@ -52,4 +57,17 @@ public class SpawnSample : ScriptableObject
             return new List<SpawnSample[]> { _XFaceAllowed, _NegativeXFaceAllowed, _YFaceAllowed, _NegativeYFaceAllowed, _ZFaceAllowed, _NegativeZFaceAllowed };
         }
     }
+
+    public void FillSamples(SpawnSample[] positiveX, SpawnSample[] negativeX,
+                            SpawnSample[] positiveY, SpawnSample[] negativeY,
+                            SpawnSample[] positiveZ, SpawnSample[] negativeZ)
+    {
+        _XFaceAllowed =         positiveX[0] == null ? null : positiveX;
+        _NegativeXFaceAllowed = negativeX[0] == null ? null : negativeX;
+        _YFaceAllowed =         positiveY[0] == null ? null : positiveY;
+        _NegativeYFaceAllowed = negativeY[0] == null ? null : negativeY;
+        _ZFaceAllowed =         positiveZ[0] == null ? null : positiveZ;
+        _NegativeZFaceAllowed = negativeZ[0] == null ? null : negativeZ;
+    }
+
 }

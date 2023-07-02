@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Collections;
 using UnityEngine;
 using Unity.VisualScripting;
 using System;
+using System.Xml;
 
 [ExecuteInEditMode]
 public class WFCSpawner : MonoBehaviour
@@ -19,9 +19,6 @@ public class WFCSpawner : MonoBehaviour
     private int _gridLength = 8;
     [SerializeField]
     private int _gridHeight = 3;
-
-    [SerializeField]
-    private float _visualizerPauseValue = 2.0f;
 
     private Vector3 _currentCubePos = Vector3.zero;
     private Vector3 _currentNeighbourPos = Vector3.zero;
@@ -64,7 +61,7 @@ public class WFCSpawner : MonoBehaviour
     {
         StopCollapsing();
         _startedCollapse = true;
-        StartCoroutine(CollapseVisualizer(_visualizerPauseValue));
+        Collapse();
     }
 
     /// <summary>
@@ -76,12 +73,7 @@ public class WFCSpawner : MonoBehaviour
         StopAllCoroutines();
     }
 
-    /// <summary>
-    /// Visualizes process of collapsion
-    /// </summary>
-    /// <param name="timeToWait">time it takes to wait between steps</param>
-    /// <returns></returns>
-    private IEnumerator CollapseVisualizer(float timeToWait)
+    private void Collapse()
     {
         for (int i = 0; i < _cells.Count; i++)
         {
@@ -90,12 +82,7 @@ public class WFCSpawner : MonoBehaviour
 
             currentCell.CollapseCell();
 
-            if (_visualizerPauseValue != 0)
-                yield return new WaitForSeconds(_visualizerPauseValue);
-
             PropagateChangesToOthers(currentCell);
-
-            yield return Propagation(currentCell);
 
             _currentCubePos = new Vector3(currentCell.X, currentCell.Y, currentCell.Z) * _cellScale;
 
@@ -105,16 +92,16 @@ public class WFCSpawner : MonoBehaviour
 
                 if (currentCellSpawnSample != null && currentCellSpawnSample.SpawnPrefab != null)
                 {
-                    GameObject SpawnedCell = Instantiate(currentCellSpawnSample.SpawnPrefab, 
-                                             (new Vector3(currentCell.X, currentCell.Y, currentCell.Z) - Vector3.up / 2) * _cellScale, 
-                                             Quaternion.identity);
+                    GameObject SpawnedCell = Instantiate(currentCellSpawnSample.SpawnPrefab,
+                                             (new Vector3(currentCell.X, currentCell.Y, currentCell.Z) - Vector3.up / 2) * _cellScale,
+                                             Quaternion.Euler(0.0f, currentCellSpawnSample.OffsetAngle, 0.0f),
+                                             transform); ;
+
+                    Debug.Log(SpawnedCell.name);
 
                     SpawnedCell.transform.localScale *= _cellScale;
                 }
             }
-
-            if (_visualizerPauseValue != 0)
-                yield return new WaitForSeconds(_visualizerPauseValue * 1.5f);
         }
         _startedCollapse = false;
     }
@@ -124,11 +111,6 @@ public class WFCSpawner : MonoBehaviour
     /// </summary>
     /// <param name="fromCell">cell that propagates to its neighbours</param>
     private void PropagateChangesToOthers(Cell fromCell)
-    {
-        StartCoroutine(Propagation(fromCell));
-    }
-
-    private IEnumerator Propagation(Cell fromCell)
     {
         _stackedCells.Push(fromCell);
 
@@ -165,14 +147,10 @@ public class WFCSpawner : MonoBehaviour
                         if (!_stackedCells.Contains(currentNeighbour))
                             _stackedCells.Push(currentNeighbour);
                     }
-
-                    if (_visualizerPauseValue != 0)
-                        yield return new WaitForSeconds(_visualizerPauseValue * 1.5f);
                 }
             }
         }
     }
-
     private SpawnSample[] GetPossibleNeighbours(Cell fromCell, SpawnSample.Axis axis)
     {
         List<SpawnSample> samples = new List<SpawnSample>();
@@ -182,37 +160,43 @@ public class WFCSpawner : MonoBehaviour
             case SpawnSample.Axis.PositiveX:
                 for (int i = 0; i < cellSamples.Count; i++)
                 {
-                    samples.AddRange(cellSamples[i].XFaceAllowed);
+                    if (cellSamples[i].XFaceAllowed != null)
+                        samples.AddRange(cellSamples[i].XFaceAllowed);
                 }
                 break;
             case SpawnSample.Axis.NegativeX:
                 for (int i = 0; i < cellSamples.Count; i++)
                 {
-                    samples.AddRange(cellSamples[i].NegativeXFaceAllowed);
+                    if (cellSamples[i].NegativeXFaceAllowed != null)
+                        samples.AddRange(cellSamples[i].NegativeXFaceAllowed);
                 }
                 break;
             case SpawnSample.Axis.PositiveY:
                 for (int i = 0; i < cellSamples.Count; i++)
                 {
-                    samples.AddRange(cellSamples[i].YFaceAllowed);
+                    if (cellSamples[i].YFaceAllowed != null)
+                        samples.AddRange(cellSamples[i].YFaceAllowed);
                 }
                 break;
             case SpawnSample.Axis.NegativeY:
                 for (int i = 0; i < cellSamples.Count; i++)
                 {
-                    samples.AddRange(cellSamples[i].NegativeYFaceAllowed);
+                    if (cellSamples[i].NegativeYFaceAllowed != null)
+                        samples.AddRange(cellSamples[i].NegativeYFaceAllowed);
                 }
                 break;
             case SpawnSample.Axis.PositiveZ:
                 for (int i = 0; i < cellSamples.Count; i++)
                 {
-                    samples.AddRange(cellSamples[i].ZFaceAllowed);
+                    if (cellSamples[i].ZFaceAllowed != null)
+                        samples.AddRange(cellSamples[i].ZFaceAllowed);
                 }
                 break;
             case SpawnSample.Axis.NegativeZ:
                 for (int i = 0; i < cellSamples.Count; i++)
                 {
-                    samples.AddRange(cellSamples[i].NegativeZFaceAllowed);
+                    if (cellSamples[i].NegativeZFaceAllowed != null)
+                        samples.AddRange(cellSamples[i].NegativeZFaceAllowed);
                 }
                 break;
             default:
@@ -323,6 +307,104 @@ public class WFCSpawner : MonoBehaviour
             Gizmos.DrawCube(_currentNeighbourPos, Vector3.one * _cellScale);
 
             Gizmos.color = Color.blue;
+        }
+    }
+
+    public void LoadSamplesFromXML(string path)
+    {
+        XmlDocument xDoc = new XmlDocument();
+        xDoc.Load(path);
+
+        XmlElement xRoot = xDoc.DocumentElement;
+
+        foreach (XmlNode xNode in xRoot)
+        {
+            if (xNode.Attributes.Count > 0)
+            {
+                for (int i = 0; i < xNode.ChildNodes.Count; i++)
+                {
+                    XmlNode childNode = xNode.ChildNodes[i]; // worksheet node
+
+                    int sampleCounter = -1;
+
+                    for (int k = 0; k < childNode.ChildNodes.Count; k++)
+                    {
+                        XmlNode childChildNode = childNode.ChildNodes[k]; // table node
+
+                        if (childChildNode.Name == "Row")
+                        {
+                            List<List<SpawnSample>> listOfSpawnSamples = new List<List<SpawnSample>>(6); // for one block: x, negx, y, negy, z, negz
+
+                            for (int j = 1; j < childChildNode.ChildNodes.Count; j++)
+                            {
+                                string cellValue = "";
+                                XmlNode cellNode = childChildNode.ChildNodes[j]; // cell node
+
+                                if (cellNode != null && cellNode.FirstChild != null)
+                                    cellValue = cellNode.FirstChild.FirstChild.Value;
+
+                                if (cellValue == "PositiveX" || cellValue == "NegativeX" ||
+                                    cellValue == "PositiveY" || cellValue == "NegativeY" ||
+                                    cellValue == "PositiveZ" || cellValue == "NegativeZ")
+                                {
+                                    sampleCounter = -2;
+                                    break;
+                                }
+
+                                string[] currentAxisSamplesStr = cellValue.Split(',');
+
+                                listOfSpawnSamples.Add(new List<SpawnSample>());
+                                    
+                                if (currentAxisSamplesStr[0] != "")
+                                {
+                                    listOfSpawnSamples[j - 1].AddRange(new List<SpawnSample>(GetSpawnSamplesByIndices(currentAxisSamplesStr, -1)));
+                                }
+                                else
+                                {
+                                    listOfSpawnSamples[j - 1].Add(null);
+                                }
+                                
+                            }
+
+                            if (sampleCounter == -2)
+                            {
+                                sampleCounter = 0;
+                                continue;
+                            }
+
+                            _spawnSamples[sampleCounter].FillSamples(listOfSpawnSamples[0].ToArray(), listOfSpawnSamples[1].ToArray(),
+                                                                     listOfSpawnSamples[2].ToArray(), listOfSpawnSamples[3].ToArray(),
+                                                                     listOfSpawnSamples[4].ToArray(), listOfSpawnSamples[5].ToArray());
+                            sampleCounter++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private SpawnSample[] GetSpawnSamplesByIndices(string[] sampleIndices, int offset = 0)
+    {
+        if (sampleIndices.Contains("")) // check if contains empty strings
+        {
+            return new SpawnSample[] { null };
+        }
+
+        SpawnSample[] samples = new SpawnSample[sampleIndices.Length];
+
+        for (int i = 0; i < samples.Length; i++)
+        {
+            samples[i] = _spawnSamples[int.Parse(sampleIndices[i]) + offset];
+        }
+
+        return samples;
+    }
+
+    public void ClearBlocks()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(transform.GetChild(i).gameObject);
         }
     }
 }

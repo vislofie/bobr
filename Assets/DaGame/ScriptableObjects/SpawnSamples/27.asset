@@ -12,12 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000eff965a8f0334dad833d57b4d7ecd, type: 3}
   m_Name: 27
   m_EditorClassIdentifier: 
-  _spawnPrefab: {fileID: 6536752611796819875, guid: c24b7d95e5f914941ba1ffa77d05b02b,
+  _spawnPrefab: {fileID: 7094243624411506484, guid: 6ccf46b9a63d5f646bc222ade4f59afe,
     type: 3}
-  _randomChance: 1
-  _XFaceAllowed: []
-  _NegativeXFaceAllowed: []
-  _YFaceAllowed: []
-  _NegativeYFaceAllowed: []
-  _ZFaceAllowed: []
-  _NegativeZFaceAllowed: []
+  _randomChance: 0.4
+  _offsetAngle: -90
+  _XFaceAllowed:
+  - {fileID: 11400000, guid: de4771b38bf39724b8f8764bcd91ac0f, type: 2}
+  - {fileID: 11400000}
+  _NegativeXFaceAllowed:
+  - {fileID: 11400000, guid: 9eb9ba700ad13c64fa19dcc491e7b9ad, type: 2}
+  - {fileID: 11400000}
+  _YFaceAllowed:
+  - {fileID: 11400000}
+  _NegativeYFaceAllowed:
+  - {fileID: 11400000, guid: 56c05df61e7bf3c44881378c9d5dc7ef, type: 2}
+  - {fileID: 11400000, guid: 4328712bbaa130647b73f7778c549d52, type: 2}
+  - {fileID: 11400000, guid: 9eb9ba700ad13c64fa19dcc491e7b9ad, type: 2}
+  - {fileID: 11400000, guid: 597083886a84a444b83bf138967d581b, type: 2}
+  - {fileID: 11400000, guid: de4771b38bf39724b8f8764bcd91ac0f, type: 2}
+  - {fileID: 11400000, guid: 076f86493985a87458d59b10d9de072e, type: 2}
+  - {fileID: 11400000, guid: 228be27662a65154ca7405f8a7a98cf0, type: 2}
+  - {fileID: 11400000, guid: 64e7fd75216b4b548a2b7c783051a307, type: 2}
+  - {fileID: 11400000, guid: 579a328704b6eac4a95f0addcde653c7, type: 2}
+  - {fileID: 11400000, guid: 7013f4c023f511e45a34f0a63bfce033, type: 2}
+  - {fileID: 11400000, guid: ed0f35e694eb9a045a8b5e18f1753e44, type: 2}
+  - {fileID: 11400000, guid: 42187b0e99c00de4682bb7c9617c7db4, type: 2}
+  - {fileID: 11400000, guid: 488e4ad97d78a07419f80b1c9fc90b0d, type: 2}
+  - {fileID: 11400000, guid: 03494e7a05e670949b1ac0d524221fa2, type: 2}
+  - {fileID: 11400000, guid: e9d125cb8388fdb41858c126034ffbc5, type: 2}
+  - {fileID: 11400000, guid: 2d047df312985274890c95851bed4c80, type: 2}
+  - {fileID: 11400000, guid: f6dc747b7cdeb9d43865cdac9485bd29, type: 2}
+  - {fileID: 11400000, guid: d821b0dd099bead4dafa67a6af216604, type: 2}
+  - {fileID: 11400000}
+  _ZFaceAllowed:
+  - {fileID: 11400000, guid: 597083886a84a444b83bf138967d581b, type: 2}
+  - {fileID: 11400000}
+  _NegativeZFaceAllowed:
+  - {fileID: 11400000, guid: 076f86493985a87458d59b10d9de072e, type: 2}
+  - {fileID: 11400000}

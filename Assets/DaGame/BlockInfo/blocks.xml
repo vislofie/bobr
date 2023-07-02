@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x2="urn:schemas-microsoft-com:office:excel2" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+ <x:ExcelWorkbook>
+  <x:ActiveSheet>0</x:ActiveSheet>
+ </x:ExcelWorkbook>
+ <o:DocumentProperties>
+  <o:Author>darge</o:Author>
+  <o:Created>2015-06-05T18:19:34Z</o:Created>
+  <o:LastSaved>2023-06-22T16:27:31Z</o:LastSaved>
+ </o:DocumentProperties>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+  </Style>
+  <Style ss:ID="S21">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+  </Style>
+  <Style ss:ID="S22">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+  </Style>
+  <Style ss:ID="S23">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+  </Style>
+  <Style ss:ID="S24">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+  </Style>
+  <Style ss:ID="S25">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+  </Style>
+  <Style ss:ID="S26">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+  </Style>
+  <Style ss:ID="S27">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+  </Style>
+  <Style ss:ID="S28">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:NumberFormat ss:Format="@" />
+  </Style>
+  <Style ss:ID="S29">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:NumberFormat ss:Format="@" />
+  </Style>
+  <Style ss:ID="S30">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:NumberFormat ss:Format="@" />
+  </Style>
+  <Style ss:ID="S31">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:NumberFormat ss:Format="@" />
+  </Style>
+  <Style ss:ID="S32">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:Interior ss:Color="#FFFF00" ss:Pattern="Solid" />
+   <ss:NumberFormat ss:Format="@" />
+  </Style>
+  <Style ss:ID="S33">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:Interior ss:Color="#FFFF00" ss:Pattern="Solid" />
+   <ss:NumberFormat ss:Format="@" />
+  </Style>
+  <Style ss:ID="S34">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="2" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:Interior ss:Color="#00B0F0" ss:Pattern="Solid" />
+   <ss:NumberFormat ss:Format="@" />
+  </Style>
+  <Style ss:ID="S35">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Top" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Bottom" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:Interior ss:Color="#FFFF00" ss:Pattern="Solid" />
+  </Style>
+  <Style ss:ID="S36">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:Interior ss:Color="#FFFF00" ss:Pattern="Solid" />
+  </Style>
+  <Style ss:ID="S37">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Borders>
+    <ss:Border ss:Position="Left" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+    <ss:Border ss:Position="Right" ss:Color="#000000" ss:LineStyle="Continuous" ss:Weight="1" />
+   </ss:Borders>
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:Interior ss:Color="#FFFF00" ss:Pattern="Solid" />
+   <ss:NumberFormat ss:Format="@" />
+  </Style>
+  <Style ss:ID="S38">
+   <ss:Alignment ss:Vertical="Bottom" />
+   <ss:Font ss:Color="#000000" ss:FontName="Calibri" ss:Size="11" />
+   <ss:Interior ss:Color="#FFFF00" ss:Pattern="Solid" />
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Лист1">
+  <ss:Names />
+  <ss:Table ss:DefaultRowHeight="15" ss:DefaultColumnWidth="48" ss:ExpandedRowCount="30" ss:ExpandedColumnCount="7">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="138" />
+   <Column ss:Index="3" ss:AutoFitWidth="0" ss:Width="141.75" />
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="145.5" />
+   <Column ss:Index="5" ss:AutoFitWidth="0" ss:Width="128.25" />
+   <Column ss:Index="6" ss:AutoFitWidth="0" ss:Width="151.5" />
+   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="120.75" />
+   <Row ss:Index="1" ss:Height="15.75">
+    <Cell ss:StyleID="S24"><Data ss:Type="String">Block</Data>
+    </Cell>
+    <Cell ss:StyleID="S26"><Data ss:Type="String">PositiveX</Data>
+    </Cell>
+    <Cell ss:StyleID="S25"><Data ss:Type="String">NegativeX</Data>
+    </Cell>
+    <Cell ss:StyleID="S25"><Data ss:Type="String">PositiveY</Data>
+    </Cell>
+    <Cell ss:StyleID="S27"><Data ss:Type="String">NegativeY</Data>
+    </Cell>
+    <Cell ss:StyleID="S26"><Data ss:Type="String">PositiveZ</Data>
+    </Cell>
+    <Cell ss:StyleID="S25"><Data ss:Type="String">NegativeZ</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="2">
+    <Cell ss:StyleID="S23"><Data ss:Type="Number">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S28"><Data ss:Type="String">1,20</Data>
+    </Cell>
+    <Cell ss:StyleID="S28"><Data ss:Type="String">1,22</Data>
+    </Cell>
+    <Cell ss:StyleID="S28"><Data ss:Type="Number">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S29"><Data ss:Type="String">1,28,20</Data>
+    </Cell>
+    <Cell ss:StyleID="S28"><Data ss:Type="String">1,21</Data>
+    </Cell>
+    <Cell ss:StyleID="S28"><Data ss:Type="String">1,23</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="3">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">2</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,6,9,10,22,25,26</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,4,8,11,20,24,27</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,7,10,11,23,26,27</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,5,8,9,20,24,25</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="4">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">3</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">3,14,17,18</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">3,12,16,19</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">29</Data>
+    </Cell>
+    <Cell ss:StyleID="S33"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">3,15,18,19</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">3,13,16,17</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="5">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">4</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">8</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">11</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="6">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">5</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">8</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">9</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+   </Row>
+   <Row ss:Index="7">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">6</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">9</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">10</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="8">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">7</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">11</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">10</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="9">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">8</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">5</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">4</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="10">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">9</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">5</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">6</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="11">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">10</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">7</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">6</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="12">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">11</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">7</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S31"><Data ss:Type="String">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">4</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="13">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">12</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S34"><Data ss:Type="String">3,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">16</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">19</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="14">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">13</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">16</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">17</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S34"><Data ss:Type="String">3,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+   </Row>
+   <Row ss:Index="15">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">14</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S34"><Data ss:Type="String">3,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">17</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">18</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="16">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">15</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">19</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">18</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S34"><Data ss:Type="String">3,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="17">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">16</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">13</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S34"><Data ss:Type="String">3,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">12</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="18">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">17</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">13</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S34"><Data ss:Type="String">3,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">14</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="19">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">18</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">15</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S34"><Data ss:Type="String">3,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">14</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="20">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">19</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">15</Data>
+    </Cell>
+    <Cell ss:StyleID="S30" />
+    <Cell ss:StyleID="S34"><Data ss:Type="String">3,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">12</Data>
+    </Cell>
+    <Cell ss:StyleID="S32"><Data ss:Type="String">3,28,29</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="21">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">20</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">20,1</Data>
+    </Cell>
+    <Cell ss:StyleID="S31"><Data ss:Type="String">20,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">24</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">27</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="22">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">21</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">24</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">25</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">20,1</Data>
+    </Cell>
+    <Cell ss:StyleID="S31"><Data ss:Type="String">20,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">1</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="23">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">22</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">20,1</Data>
+    </Cell>
+    <Cell ss:StyleID="S31"><Data ss:Type="String">20,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">26</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">25</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="24">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">23</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">24</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">26</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">20,1</Data>
+    </Cell>
+    <Cell ss:StyleID="S31"><Data ss:Type="String">20,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="25">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">24</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">21</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S31"><Data ss:Type="String">24,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">20</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="26">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">25</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">22</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S31"><Data ss:Type="String">25,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">21</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="27">
+    <Cell ss:StyleID="S22"><Data ss:Type="Number">26</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">22</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S31"><Data ss:Type="String">26,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">23</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="28">
+    <Cell ss:StyleID="S21"><Data ss:Type="Number">27</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">23</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">1</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">27,28</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">20</Data>
+    </Cell>
+    <Cell ss:StyleID="S30"><Data ss:Type="String">2,28</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="29">
+    <Cell ss:StyleID="S21"><Data ss:Type="Number">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S21"><Data ss:Type="String">2,3,6,9,10,14,17,18,22,25,26</Data>
+    </Cell>
+    <Cell ss:StyleID="S21"><Data ss:Type="String">2,3,4,8,11,12,16,19,20,24,27</Data>
+    </Cell>
+    <Cell ss:StyleID="S35"><Data ss:Type="String">1,2,3,12,13,14,15,16,17,18,19,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S21"><Data ss:Type="Number">28</Data>
+    </Cell>
+    <Cell ss:StyleID="S21"><Data ss:Type="String">2,3,7,10,11,15,18,19,23,26,27</Data>
+    </Cell>
+    <Cell ss:StyleID="S21"><Data ss:Type="String">2,3,5,8,9,13,16,17,21,24,25</Data>
+    </Cell>
+   </Row>
+   <Row ss:Index="30">
+    <Cell ss:StyleID="S36"><Data ss:Type="Number">29</Data>
+    </Cell>
+    <Cell ss:StyleID="S37"><Data ss:Type="String">14,17,18,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S37"><Data ss:Type="String">12,16,19,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S38" />
+    <Cell ss:StyleID="S38"><Data ss:Type="Number">3</Data>
+    </Cell>
+    <Cell ss:StyleID="S37"><Data ss:Type="String">15,18,19,29</Data>
+    </Cell>
+    <Cell ss:StyleID="S37"><Data ss:Type="String">13,16,17,19</Data>
+    </Cell>
+   </Row>
+  </ss:Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Zoom>124</Zoom>
+   <PageSetup>
+    <Header x:Margin="0.3" />
+    <Footer x:Margin="0.3" />
+    <PageMargins x:Top="0.75" x:Bottom="0.75" x:Left="0.7" x:Right="0.7" />
+   </PageSetup>
+   <Print>
+    <ValidPrinterInfo />
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>8</ActiveCol>
+     <RangeSelection>R10C9</RangeSelection>
+    </Pane>
+   </Panes>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

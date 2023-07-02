@@ -12,12 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000eff965a8f0334dad833d57b4d7ecd, type: 3}
   m_Name: 21
   m_EditorClassIdentifier: 
-  _spawnPrefab: {fileID: 8960087661434711030, guid: 4392af92a5a07bd469d2bf6f2bd6e2db,
+  _spawnPrefab: {fileID: 1956972722273773462, guid: fc68c02cece60c340a7dec54b2c6703b,
     type: 3}
-  _randomChance: 1
-  _XFaceAllowed: []
-  _NegativeXFaceAllowed: []
-  _YFaceAllowed: []
-  _NegativeYFaceAllowed: []
-  _ZFaceAllowed: []
-  _NegativeZFaceAllowed: []
+  _randomChance: 0.4
+  _offsetAngle: -90
+  _XFaceAllowed:
+  - {fileID: 11400000, guid: 8b1b03c2b30726646b7768de8b4a095c, type: 2}
+  _NegativeXFaceAllowed:
+  - {fileID: 11400000, guid: 076f86493985a87458d59b10d9de072e, type: 2}
+  - {fileID: 11400000, guid: 7013f4c023f511e45a34f0a63bfce033, type: 2}
+  _YFaceAllowed:
+  - {fileID: 11400000, guid: 8b1b03c2b30726646b7768de8b4a095c, type: 2}
+  _NegativeYFaceAllowed:
+  - {fileID: 11400000, guid: 7a3fcd9444022e3418746fb4812139e6, type: 2}
+  _ZFaceAllowed:
+  - {fileID: 11400000, guid: 8b1b03c2b30726646b7768de8b4a095c, type: 2}
+  _NegativeZFaceAllowed:
+  - {fileID: 11400000, guid: 9eb9ba700ad13c64fa19dcc491e7b9ad, type: 2}
+  - {fileID: 11400000, guid: 7013f4c023f511e45a34f0a63bfce033, type: 2}

@@ -15,9 +15,21 @@ MonoBehaviour:
   _spawnPrefab: {fileID: 4200362433750469740, guid: a389303c4394c2c4db1a46e81fd48dc1,
     type: 3}
   _randomChance: 1
-  _XFaceAllowed: []
-  _NegativeXFaceAllowed: []
-  _YFaceAllowed: []
-  _NegativeYFaceAllowed: []
-  _ZFaceAllowed: []
-  _NegativeZFaceAllowed: []
+  _XFaceAllowed:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 488e4ad97d78a07419f80b1c9fc90b0d, type: 2}
+  _NegativeXFaceAllowed:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: ed0f35e694eb9a045a8b5e18f1753e44, type: 2}
+  _YFaceAllowed:
+  - {fileID: 11400000, guid: 8b1b03c2b30726646b7768de8b4a095c, type: 2}
+  _NegativeYFaceAllowed:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: ed0f35e694eb9a045a8b5e18f1753e44, type: 2}
+  - {fileID: 11400000, guid: 7a3fcd9444022e3418746fb4812139e6, type: 2}
+  _ZFaceAllowed:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 42187b0e99c00de4682bb7c9617c7db4, type: 2}
+  _NegativeZFaceAllowed:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 03494e7a05e670949b1ac0d524221fa2, type: 2}
